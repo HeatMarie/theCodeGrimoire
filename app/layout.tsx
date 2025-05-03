@@ -20,9 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='en' suppressHydrationWarning data-theme='dark'>
       <body className={`${inter.variable} ${cinzel.variable} ${cormorant.variable} font-sans`}>
-        <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute='class' defaultTheme='dark' disableTransitionOnChange>
           {children}
         </ThemeProvider>
       </body>

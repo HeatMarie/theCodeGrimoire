@@ -1,22 +1,22 @@
-"use client"
+'use client';
 
-import { ChapterLayout } from "@/components/chapter-layout"
-import { CodeSpell } from "@/components/code-spell"
-import { SpellNote } from "@/components/spell-note"
-import { notFound } from "next/navigation"
+import { ChapterLayout } from '@/components/chapter-layout';
+import { CodeSpell } from '@/components/code-spell';
+import { SpellNote } from '@/components/spell-note';
+import { notFound } from 'next/navigation';
 
 interface ChapterParams {
   params: {
-    id: string
-  }
+    id: string;
+  };
 }
 
 export default function ChapterPage({ params }: ChapterParams) {
-  const chapterId = Number.parseInt(params.id)
+  const chapterId = Number.parseInt(params.id);
 
   // Validate chapter ID
   if (isNaN(chapterId) || chapterId < 1 || chapterId > 5) {
-    notFound()
+    notFound();
   }
 
   const chapters = [
@@ -27,60 +27,57 @@ export default function ChapterPage({ params }: ChapterParams) {
     },
     {
       id: 2,
-      title: "The Enchanted Backpack",
+      title: 'The Enchanted Backpack',
       content: () => <Chapter2Content />,
     },
     {
       id: 3,
-      title: "Casting Your First Spell",
+      title: 'Casting Your First Spell',
       content: () => <Chapter3Content />,
     },
     {
       id: 4,
-      title: "The Magical Contract",
+      title: 'The Magical Contract',
       content: () => <Chapter4Content />,
     },
     {
       id: 5,
-      title: "Realms of the Changing Mist",
+      title: 'Realms of the Changing Mist',
       content: () => <Chapter5Content />,
     },
-  ]
+  ];
 
-  const chapter = chapters.find((c) => c.id === chapterId)
+  const chapter = chapters.find((c) => c.id === chapterId);
 
   if (!chapter) {
-    notFound()
+    notFound();
   }
 
-  const ChapterContent = chapter.content
+  const ChapterContent = chapter.content;
 
   return (
     <ChapterLayout chapterId={chapter.id} title={chapter.title} totalChapters={chapters.length}>
       <ChapterContent />
     </ChapterLayout>
-  )
+  );
 }
 
 function Chapter1Content() {
   return (
-    <div className="chapter-content">
+    <div className='chapter-content'>
       <p>
-        In the mystical land of Weboria, a young hero named Aria awoke to find a strange glowing scroll by her bedside.
-        The scroll contained a prophecy that spoke of her destiny to become a master crafter of magical constructs that
-        would bring life and interactivity to the realm.
+        In the mystical land of Weboria, a young hero named Lyra awoke to find a strange glowing scroll by her bedside. The scroll contained a
+        prophecy that spoke of her destiny to become a master crafter of magical constructs that would bring life and interactivity to the realm.
       </p>
 
-      <p className="mt-4">
-        "To begin your journey," the scroll read, "you must first learn to craft a simple magical construct. These
-        constructs are the building blocks of all enchanted creations in our realm."
+      <p className='mt-4'>
+        "To begin your journey," the scroll read, "you must first learn to craft a simple magical construct. These constructs are the building blocks
+        of all enchanted creations in our realm."
       </p>
 
-      <p className="mt-4">
-        Aria studied the ancient runes on the scroll, which revealed the pattern for creating her first construct:
-      </p>
+      <p className='mt-4'>Lyra studied the ancient runes on the scroll, which revealed the pattern for creating her first construct:</p>
 
-      <CodeSpell title="The First Construct Spell">
+      <CodeSpell title='The First Construct Spell'>
         {`function HeroGreeting() {
   return (
     <div className="hero-banner">
@@ -91,26 +88,23 @@ function Chapter1Content() {
 }`}
       </CodeSpell>
 
-      <SpellNote title="Magical Insight">
-        This magical construct is what we call a <strong>React Component</strong>. Components are the fundamental
-        building blocks of React applications, just like magical constructs are the building blocks of enchanted
-        creations in our story. Each component is a reusable piece of code that returns a React element describing what
-        should appear on the screen.
+      <SpellNote title='Magical Insight'>
+        This magical construct is what we call a <strong>React Component</strong>. Components are the fundamental building blocks of React
+        applications, just like magical constructs are the building blocks of enchanted creations in our story. Each component is a reusable piece of
+        code that returns a React element describing what should appear on the screen.
       </SpellNote>
 
-      <p className="mt-4">
-        Aria studied the construct carefully. She noticed how it was named "HeroGreeting" and how it returned a
-        structure with nested elements. The wise mages called this structure "JSX" - a powerful fusion of HTML markup
-        and JavaScript magic.
+      <p className='mt-4'>
+        Lyra studied the construct carefully. She noticed how it was named "HeroGreeting" and how it returned a structure with nested elements. The
+        wise mages called this structure "JSX" - a powerful fusion of HTML markup and JavaScript magic.
       </p>
 
-      <p className="mt-4">
-        "I see," Aria whispered. "Each construct has a name that starts with a capital letter, and it returns what
-        appears to be a fragment of an enchanted scroll, with tags that describe what it should look like when
-        rendered."
+      <p className='mt-4'>
+        "I see," Lyra whispered. "Each construct has a name that starts with a capital letter, and it returns what appears to be a fragment of an
+        enchanted scroll, with tags that describe what it should look like when rendered."
       </p>
 
-      <CodeSpell title="Using The Construct">
+      <CodeSpell title='Using The Construct'>
         {`function HomePage() {
   return (
     <main>
@@ -121,45 +115,41 @@ function Chapter1Content() {
 }`}
       </CodeSpell>
 
-      <SpellNote title="Magical Insight">
-        Components can be composed together, meaning you can use components within other components. This is one of the
-        most powerful features of React, allowing you to build complex UIs from simple, reusable pieces - just like how
-        a master enchanter might combine simple magical constructs to create more complex enchantments.
+      <SpellNote title='Magical Insight'>
+        Components can be composed together, meaning you can use components within other components. This is one of the most powerful features of
+        React, allowing you to build complex UIs from simple, reusable pieces - just like how a master enchanter might combine simple magical
+        constructs to create more complex enchantments.
       </SpellNote>
 
-      <p className="mt-4">
-        As Aria practiced crafting this simple construct, she began to understand the fundamental pattern of component
-        magic. Each construct had a clear purpose, a descriptive name, and returned a visible manifestation that could
-        be used within larger, more complex enchantments.
+      <p className='mt-4'>
+        As Lyra practiced crafting this simple construct, she began to understand the fundamental pattern of component magic. Each construct had a
+        clear purpose, a descriptive name, and returned a visible manifestation that could be used within larger, more complex enchantments.
       </p>
 
-      <p className="mt-4">
-        "This is just the beginning," she thought, as she prepared to learn about more advanced constructs in the days
-        to come. "Soon I will learn how these constructs can interact with each other and respond to the actions of
-        users in the realm."
+      <p className='mt-4'>
+        "This is just the beginning," she thought, as she prepared to learn about more advanced constructs in the days to come. "Soon I will learn how
+        these constructs can interact with each other and respond to the actions of users in the realm."
       </p>
     </div>
-  )
+  );
 }
 
 function Chapter2Content() {
   return (
-    <div className="chapter-content">
+    <div className='chapter-content'>
       <p>
-        As Aria continued her journey, she came upon an ancient enchanter named Eldrin who was known throughout the
-        realm for his mastery of magical storage. Eldrin explained that every hero needs a way to store and organize the
-        items they collect on their adventures.
+        As Lyra continued her journey, she came upon an ancient enchanter named Eldrin who was known throughout the realm for his mastery of magical
+        storage. Eldrin explained that every hero needs a way to store and organize the items they collect on their adventures.
       </p>
 
-      <p className="mt-4">
-        "Before you can embark on greater quests," Eldrin said, "you must first craft an enchanted backpack. This
-        magical container will hold all the items you gather and organize them in a way that makes them easy to find and
-        use."
+      <p className='mt-4'>
+        "Before you can embark on greater quests," Eldrin said, "you must first craft an enchanted backpack. This magical container will hold all the
+        items you gather and organize them in a way that makes them easy to find and use."
       </p>
 
-      <p className="mt-4">Eldrin showed Aria a magical schema - a blueprint for creating her enchanted backpack:</p>
+      <p className='mt-4'>Eldrin showed Lyra a magical schema - a blueprint for creating her enchanted backpack:</p>
 
-      <CodeSpell title="The Enchanted Backpack Schema">
+      <CodeSpell title='The Enchanted Backpack Schema'>
         {`// This is a Prisma schema for our Hero's backpack
 
 model Hero {
@@ -179,23 +169,20 @@ model Item {
 }`}
       </CodeSpell>
 
-      <SpellNote title="Magical Insight">
-        This schema represents a <strong>database model</strong> using Prisma, a modern database toolkit. In our fantasy
-        metaphor, the Hero's enchanted backpack is like a database, with different pouches (tables) for organizing
-        items. The schema defines the structure of our data - what information we store about heroes and their items,
-        and how these pieces of information relate to each other.
+      <SpellNote title='Magical Insight'>
+        This schema represents a <strong>database model</strong> using Prisma, a modern database toolkit. In our fantasy metaphor, the Hero's
+        enchanted backpack is like a database, with different pouches (tables) for organizing items. The schema defines the structure of our data -
+        what information we store about heroes and their items, and how these pieces of information relate to each other.
       </SpellNote>
 
-      <p className="mt-4">
-        "I see," said Aria. "So the enchanted backpack has different compartments for different types of items. And
-        there's a magical connection between the hero and their items."
+      <p className='mt-4'>
+        "I see," said Lyra. "So the enchanted backpack has different compartments for different types of items. And there's a magical connection
+        between the hero and their items."
       </p>
 
-      <p className="mt-4">
-        "Precisely," nodded Eldrin. "Now, let me show you how to access the items in your backpack when you need them."
-      </p>
+      <p className='mt-4'>"Precisely," nodded Eldrin. "Now, let me show you how to access the items in your backpack when you need them."</p>
 
-      <CodeSpell title="Retrieving Items from the Enchanted Backpack">
+      <CodeSpell title='Retrieving Items from the Enchanted Backpack'>
         {`// A spell to retrieve all items for a hero
 async function getHeroItems(heroId) {
   const hero = await prisma.hero.findUnique({
@@ -221,50 +208,47 @@ async function addItemToBackpack(heroId, itemData) {
 }`}
       </CodeSpell>
 
-      <SpellNote title="Magical Insight">
-        These functions represent <strong>database queries</strong> that allow us to interact with our data. The first
-        function retrieves all items belonging to a specific hero, while the second function adds a new item to a hero's
-        inventory. In the real world, these would be part of your application's data access layer, allowing you to
-        perform CRUD (Create, Read, Update, Delete) operations on your database.
+      <SpellNote title='Magical Insight'>
+        These functions represent <strong>database queries</strong> that allow us to interact with our data. The first function retrieves all items
+        belonging to a specific hero, while the second function adds a new item to a hero's inventory. In the real world, these would be part of your
+        application's data access layer, allowing you to perform CRUD (Create, Read, Update, Delete) operations on your database.
       </SpellNote>
 
-      <p className="mt-4">
-        Aria practiced these incantations, learning how to store new treasures in her enchanted backpack and retrieve
-        them when needed. She realized that organizing her items in this structured way would be essential for the more
-        complex adventures that awaited her.
+      <p className='mt-4'>
+        Lyra practiced these incantations, learning how to store new treasures in her enchanted backpack and retrieve them when needed. She realized
+        that organizing her items in this structured way would be essential for the more complex adventures that awaited her.
       </p>
 
-      <p className="mt-4">
-        "The enchanted backpack is more than just storage," Eldrin explained. "It's a way of thinking about how
-        information is organized and connected. As your adventures grow more complex, you'll find that having a
-        well-designed backpack makes all the difference."
+      <p className='mt-4'>
+        "The enchanted backpack is more than just storage," Eldrin explained. "It's a way of thinking about how information is organized and
+        connected. As your adventures grow more complex, you'll find that having a well-designed backpack makes all the difference."
       </p>
 
-      <p className="mt-4">
-        With her new understanding of magical storage, Aria felt ready to continue her journey, knowing she now had a
-        way to keep track of all the magical items and knowledge she would acquire along the way.
+      <p className='mt-4'>
+        With her new understanding of magical storage, Lyra felt ready to continue her journey, knowing she now had a way to keep track of all the
+        magical items and knowledge she would acquire along the way.
       </p>
     </div>
-  )
+  );
 }
 
 function Chapter3Content() {
   return (
-    <div className="chapter-content">
+    <div className='chapter-content'>
       <p>
-        After mastering the basics of magical constructs and creating her enchanted backpack, Aria met a wise sorceress
-        named Lyra who lived in a tower filled with ancient tomes and scrolls. Lyra was known throughout the realm for
-        her mastery of magical spells that could respond to actions and events.
+        After mastering the basics of magical constructs and creating her enchanted backpack, Lyra met a wise sorceress named Lyra who lived in a
+        tower filled with ancient tomes and scrolls. Lyra was known throughout the realm for her mastery of magical spells that could respond to
+        actions and events.
       </p>
 
-      <p className="mt-4">
-        "To become a true enchanter," Lyra explained, "you must learn to cast spells that respond to the actions of
-        those who interact with your creations. These spells are the essence of interactivity in our magical realm."
+      <p className='mt-4'>
+        "To become a true enchanter," Lyra explained, "you must learn to cast spells that respond to the actions of those who interact with your
+        creations. These spells are the essence of interactivity in our magical realm."
       </p>
 
-      <p className="mt-4">Lyra showed Aria a simple spell that would respond when activated:</p>
+      <p className='mt-4'>Lyra showed Lyra a simple spell that would respond when activated:</p>
 
-      <CodeSpell title="A Simple Responsive Spell">
+      <CodeSpell title='A Simple Responsive Spell'>
         {`function MagicWand() {
   // A magical state that remembers if the wand is glowing
   const [isGlowing, setIsGlowing] = React.useState(false);
@@ -287,25 +271,21 @@ function Chapter3Content() {
 }`}
       </CodeSpell>
 
-      <SpellNote title="Magical Insight">
+      <SpellNote title='Magical Insight'>
         This component demonstrates <strong>functions</strong> and <strong>event handlers</strong> in React. The
-        <code>castLightSpell</code> function is triggered when the button is clicked (via the <code>onClick</code> event
-        handler). This function then updates the component's state using the <code>setIsGlowing</code> function, which
-        causes the component to re-render with the new state. This is how we create interactive elements in React
-        applications.
+        <code>castLightSpell</code> function is triggered when the button is clicked (via the <code>onClick</code> event handler). This function then
+        updates the component's state using the <code>setIsGlowing</code> function, which causes the component to re-render with the new state. This
+        is how we create interactive elements in React applications.
       </SpellNote>
 
-      <p className="mt-4">
-        "I see," Aria said thoughtfully. "The spell contains a memory of its current state - whether it's glowing or
-        not. And when someone activates the button, it triggers another spell that changes this state."
+      <p className='mt-4'>
+        "I see," Lyra said thoughtfully. "The spell contains a memory of its current state - whether it's glowing or not. And when someone activates
+        the button, it triggers another spell that changes this state."
       </p>
 
-      <p className="mt-4">
-        "Exactly," Lyra nodded. "Now, let me show you a more complex spell that can respond to different types of
-        interactions."
-      </p>
+      <p className='mt-4'>"Exactly," Lyra nodded. "Now, let me show you a more complex spell that can respond to different types of interactions."</p>
 
-      <CodeSpell title="A Spell with Multiple Interactions">
+      <CodeSpell title='A Spell with Multiple Interactions'>
         {`function EnchantedGrimoire() {
   // The grimoire remembers which page it's open to
   const [currentPage, setCurrentPage] = React.useState(1);
@@ -363,52 +343,48 @@ function Chapter3Content() {
 }`}
       </CodeSpell>
 
-      <SpellNote title="Magical Insight">
-        This more complex component demonstrates multiple functions that handle different interactions. Each function
-        has a specific purpose and updates the component's state in a different way. The component also shows
-        conditional rendering based on state (showing different content depending on whether the grimoire is locked) and
-        disabled buttons based on conditions (can't go past page 10 or before page 1).
+      <SpellNote title='Magical Insight'>
+        This more complex component demonstrates multiple functions that handle different interactions. Each function has a specific purpose and
+        updates the component's state in a different way. The component also shows conditional rendering based on state (showing different content
+        depending on whether the grimoire is locked) and disabled buttons based on conditions (can't go past page 10 or before page 1).
       </SpellNote>
 
-      <p className="mt-4">
-        Aria practiced these spells, marveling at how they could respond to different actions and maintain their state.
-        She realized that these interactive spells were the key to creating truly engaging magical constructs.
+      <p className='mt-4'>
+        Lyra practiced these spells, marveling at how they could respond to different actions and maintain their state. She realized that these
+        interactive spells were the key to creating truly engaging magical constructs.
       </p>
 
-      <p className="mt-4">
-        "Remember," Lyra said as their lesson concluded, "the power of these spells lies in their ability to respond to
-        the actions of those who interact with them. A great enchanter creates spells that are intuitive and provide
-        clear feedback, making the magical experience feel natural and engaging."
+      <p className='mt-4'>
+        "Remember," Lyra said as their lesson concluded, "the power of these spells lies in their ability to respond to the actions of those who
+        interact with them. A great enchanter creates spells that are intuitive and provide clear feedback, making the magical experience feel natural
+        and engaging."
       </p>
 
-      <p className="mt-4">
-        With her new knowledge of interactive spells, Aria felt ready to create constructs that could respond to the
-        needs and actions of the users in her realm.
+      <p className='mt-4'>
+        With her new knowledge of interactive spells, Lyra felt ready to create constructs that could respond to the needs and actions of the users in
+        her realm.
       </p>
     </div>
-  )
+  );
 }
 
 function Chapter4Content() {
   return (
-    <div className="chapter-content">
+    <div className='chapter-content'>
       <p>
-        Aria's journey next led her to the Grand Library of Formancia, where the keeper of scrolls, Master Thorne, was
-        renowned for his expertise in magical contracts. These special scrolls allowed citizens of the realm to provide
-        information and make requests of the kingdom's magical systems.
+        Lyra's journey next led her to the Grand Library of Formancia, where the keeper of scrolls, Master Thorne, was renowned for his expertise in
+        magical contracts. These special scrolls allowed citizens of the realm to provide information and make requests of the kingdom's magical
+        systems.
       </p>
 
-      <p className="mt-4">
-        "Magical contracts are essential for any enchanter who wishes to gather information from the users of their
-        creations," Master Thorne explained. "They allow users to input data, make selections, and submit requests that
-        your magical systems can then process."
+      <p className='mt-4'>
+        "Magical contracts are essential for any enchanter who wishes to gather information from the users of their creations," Master Thorne
+        explained. "They allow users to input data, make selections, and submit requests that your magical systems can then process."
       </p>
 
-      <p className="mt-4">
-        Master Thorne unrolled an ancient parchment that contained the pattern for a basic magical contract:
-      </p>
+      <p className='mt-4'>Master Thorne unrolled an ancient parchment that contained the pattern for a basic magical contract:</p>
 
-      <CodeSpell title="A Basic Magical Contract">
+      <CodeSpell title='A Basic Magical Contract'>
         {`function QuestApplication() {
   // The scroll remembers what the user has written
   const [heroName, setHeroName] = React.useState("");
@@ -485,25 +461,23 @@ function Chapter4Content() {
 }`}
       </CodeSpell>
 
-      <SpellNote title="Magical Insight">
-        This component demonstrates a <strong>form</strong> in React. Forms allow users to input data that can then be
-        processed by your application. The component uses state variables to track the values of each form field, and
-        updates these values when the user types or makes selections. The <code>onSubmit</code> handler prevents the
-        default form submission behavior and processes the form data. After submission, the component shows a
-        confirmation message instead of the form.
+      <SpellNote title='Magical Insight'>
+        This component demonstrates a <strong>form</strong> in React. Forms allow users to input data that can then be processed by your application.
+        The component uses state variables to track the values of each form field, and updates these values when the user types or makes selections.
+        The <code>onSubmit</code> handler prevents the default form submission behavior and processes the form data. After submission, the component
+        shows a confirmation message instead of the form.
       </SpellNote>
 
-      <p className="mt-4">
-        "I see," Aria nodded. "The magical contract maintains the state of what the user has entered, and when they
-        submit the contract, it processes their information and shows them a confirmation."
+      <p className='mt-4'>
+        "I see," Lyra nodded. "The magical contract maintains the state of what the user has entered, and when they submit the contract, it processes
+        their information and shows them a confirmation."
       </p>
 
-      <p className="mt-4">
-        "Exactly," Master Thorne replied. "Now, let me show you a more advanced contract that validates the information
-        before accepting it."
+      <p className='mt-4'>
+        "Exactly," Master Thorne replied. "Now, let me show you a more advanced contract that validates the information before accepting it."
       </p>
 
-      <CodeSpell title="A Magical Contract with Validation">
+      <CodeSpell title='A Magical Contract with Validation'>
         {`function EnchantedItemRegistration() {
   // The scroll remembers what the user has written
   const [itemName, setItemName] = React.useState("");
@@ -615,92 +589,87 @@ function Chapter4Content() {
 }`}
       </CodeSpell>
 
-      <SpellNote title="Magical Insight">
-        This component demonstrates <strong>form validation</strong> in React. Before submitting the form, it checks
-        that all required fields are filled out and that the data meets certain criteria (like not being from the
-        "Forbidden Realm"). If there are any validation errors, they are displayed to the user, and the form is not
-        submitted. This ensures that only valid data is processed by your application.
+      <SpellNote title='Magical Insight'>
+        This component demonstrates <strong>form validation</strong> in React. Before submitting the form, it checks that all required fields are
+        filled out and that the data meets certain criteria (like not being from the "Forbidden Realm"). If there are any validation errors, they are
+        displayed to the user, and the form is not submitted. This ensures that only valid data is processed by your application.
       </SpellNote>
 
-      <p className="mt-4">
-        Aria practiced creating these magical contracts, learning how to gather information from users and validate it
-        before processing. She realized that well-designed contracts were essential for creating a smooth and intuitive
-        experience for the users of her magical creations.
+      <p className='mt-4'>
+        Lyra practiced creating these magical contracts, learning how to gather information from users and validate it before processing. She realized
+        that well-designed contracts were essential for creating a smooth and intuitive experience for the users of her magical creations.
       </p>
 
-      <p className="mt-4">
-        "Remember," Master Thorne said as their lesson concluded, "a good magical contract guides the user, validates
-        their input, and provides clear feedback. It should feel like a conversation, not an interrogation."
+      <p className='mt-4'>
+        "Remember," Master Thorne said as their lesson concluded, "a good magical contract guides the user, validates their input, and provides clear
+        feedback. It should feel like a conversation, not an interrogation."
       </p>
 
-      <p className="mt-4">
-        With her new understanding of magical contracts, Aria felt ready to create forms that would allow users to
-        interact with her magical systems in a structured and intuitive way.
+      <p className='mt-4'>
+        With her new understanding of magical contracts, Lyra felt ready to create forms that would allow users to interact with her magical systems
+        in a structured and intuitive way.
       </p>
     </div>
-  )
+  );
 }
 
 async function getHeroById(id: string) {
   // Placeholder for fetching hero data
   return {
     id: id,
-    name: "Placeholder Hero",
+    name: 'Placeholder Hero',
     level: 5,
     questsCompleted: 10,
-    reputation: "Honorable",
+    reputation: 'Honorable',
     items: [
-      { id: "item1", name: "Sword of Sparking", description: "A basic sword", quantity: 1 },
-      { id: "item2", name: "Shield of Protection", description: "A basic shield", quantity: 1 },
+      { id: 'item1', name: 'Sword of Sparking', description: 'A basic sword', quantity: 1 },
+      { id: 'item2', name: 'Shield of Protection', description: 'A basic shield', quantity: 1 },
     ],
-  }
+  };
 }
 
 async function getQuestById(questId: string) {
   // Placeholder for fetching quest data
   return {
     id: questId,
-    title: "Placeholder Quest",
-    description: "A basic quest",
-    difficulty: "Easy",
-    reward: "100 gold",
+    title: 'Placeholder Quest',
+    description: 'A basic quest',
+    difficulty: 'Easy',
+    reward: '100 gold',
     requiredLevel: 1,
-  }
+  };
 }
 
 async function getCurrentHero() {
   // Placeholder for fetching current hero data
   return {
-    id: "hero1",
+    id: 'hero1',
     level: 5,
     completedQuests: [],
-  }
+  };
 }
 
 async function addQuestToHero(heroId: string, questId: any) {
   // Placeholder for adding quest to hero
-  console.log(`Added quest ${questId} to hero ${heroId}`)
+  console.log(`Added quest ${questId} to hero ${heroId}`);
 }
 
 function Chapter5Content() {
   return (
-    <div className="chapter-content">
+    <div className='chapter-content'>
       <p>
-        For the final chapter of her initial training, Aria traveled to the mystical Shifting Isles, where the landscape
-        changed based on who was viewing it. There she met Orion, a master of spatial magic who could create realms that
-        adapted to the needs and identity of each visitor.
+        For the final chapter of her initial training, Lyra traveled to the mystical Shifting Isles, where the landscape changed based on who was
+        viewing it. There she met Orion, a master of spatial magic who could create realms that adapted to the needs and identity of each visitor.
       </p>
 
-      <p className="mt-4">
-        "The most powerful enchantments," Orion explained, "are those that can change and adapt based on who is using
-        them and what they need. These dynamic realms are the pinnacle of magical craftsmanship."
+      <p className='mt-4'>
+        "The most powerful enchantments," Orion explained, "are those that can change and adapt based on who is using them and what they need. These
+        dynamic realms are the pinnacle of magical craftsmanship."
       </p>
 
-      <p className="mt-4">
-        Orion showed Aria a magical map that could lead to different locations based on the traveler's needs:
-      </p>
+      <p className='mt-4'>Orion showed Lyra a magical map that could lead to different locations based on the traveler's needs:</p>
 
-      <CodeSpell title="The Enchanted Map">
+      <CodeSpell title='The Enchanted Map'>
         {`// app/page.tsx - The main entrance to our magical realm
 export default function MagicalRealm() {
   return (
@@ -719,18 +688,15 @@ export default function MagicalRealm() {
 }`}
       </CodeSpell>
 
-      <SpellNote title="Magical Insight">
-        This component demonstrates the concept of <strong>routing</strong> in Next.js. The <code>Link</code> component
-        allows users to navigate between different pages (or "realms" in our metaphor) without a full page reload. This
-        is the foundation of client-side navigation in modern web applications, making the experience feel smooth and
-        app-like.
+      <SpellNote title='Magical Insight'>
+        This component demonstrates the concept of <strong>routing</strong> in Next.js. The <code>Link</code> component allows users to navigate
+        between different pages (or "realms" in our metaphor) without a full page reload. This is the foundation of client-side navigation in modern
+        web applications, making the experience feel smooth and app-like.
       </SpellNote>
 
-      <p className="mt-4">
-        "Now," Orion continued, "let me show you how we can create realms that adapt to the identity of the visitor."
-      </p>
+      <p className='mt-4'>"Now," Orion continued, "let me show you how we can create realms that adapt to the identity of the visitor."</p>
 
-      <CodeSpell title="A Personalized Realm">
+      <CodeSpell title='A Personalized Realm'>
         {`// app/realms/hero/[id]/page.tsx - A dynamic realm that changes based on the hero's ID
 export default async function HeroProfile({ params }) {
   // Retrieve the hero's information from the enchanted backpack
@@ -782,24 +748,20 @@ export default async function HeroProfile({ params }) {
 }`}
       </CodeSpell>
 
-      <SpellNote title="Magical Insight">
-        This component demonstrates <strong>dynamic routes</strong> in Next.js. The <code>[id]</code> in the file path
-        creates a dynamic segment that can match any value. This value is then available as <code>params.id</code> in
-        the component. This allows us to create pages that display different content based on the URL parameter, like
-        showing different hero profiles based on their ID. This is how we create personalized experiences in web
-        applications.
+      <SpellNote title='Magical Insight'>
+        This component demonstrates <strong>dynamic routes</strong> in Next.js. The <code>[id]</code> in the file path creates a dynamic segment that
+        can match any value. This value is then available as <code>params.id</code> in the component. This allows us to create pages that display
+        different content based on the URL parameter, like showing different hero profiles based on their ID. This is how we create personalized
+        experiences in web applications.
       </SpellNote>
 
-      <p className="mt-4">
-        "I see," Aria nodded. "So the realm adapts based on who is visiting it, showing them information that is
-        specific to them and their journey."
+      <p className='mt-4'>
+        "I see," Lyra nodded. "So the realm adapts based on who is visiting it, showing them information that is specific to them and their journey."
       </p>
 
-      <p className="mt-4">
-        "Exactly," Orion replied. "And we can also create realms that adapt based on the actions the hero has taken."
-      </p>
+      <p className='mt-4'>"Exactly," Orion replied. "And we can also create realms that adapt based on the actions the hero has taken."</p>
 
-      <CodeSpell title="A Realm That Responds to Actions">
+      <CodeSpell title='A Realm That Responds to Actions'>
         {`// app/realms/quest/[questId]/page.tsx - A dynamic quest realm
 export default async function QuestRealm({ params }) {
   // Retrieve the quest information
@@ -865,42 +827,38 @@ async function acceptQuest(formData) {
 }`}
       </CodeSpell>
 
-      <SpellNote title="Magical Insight">
-        This component demonstrates <strong>conditional rendering</strong> and <strong>server actions</strong> in
-        Next.js. The page displays different content based on the hero's level and whether they've already completed the
-        quest. The <code>acceptQuest</code> function is a server action that runs on the server when the form is
-        submitted. This allows us to update our database and then redirect the user to a new page. This pattern of
-        dynamic, interactive pages is the foundation of modern web applications.
+      <SpellNote title='Magical Insight'>
+        This component demonstrates <strong>conditional rendering</strong> and <strong>server actions</strong> in Next.js. The page displays different
+        content based on the hero's level and whether they've already completed the quest. The <code>acceptQuest</code> function is a server action
+        that runs on the server when the form is submitted. This allows us to update our database and then redirect the user to a new page. This
+        pattern of dynamic, interactive pages is the foundation of modern web applications.
       </SpellNote>
 
-      <p className="mt-4">
-        Aria practiced creating these dynamic realms, learning how to craft experiences that adapted to the identity and
-        actions of the user. She realized that these personalized realms were the key to creating truly engaging and
-        immersive magical experiences.
+      <p className='mt-4'>
+        Lyra practiced creating these dynamic realms, learning how to craft experiences that adapted to the identity and actions of the user. She
+        realized that these personalized realms were the key to creating truly engaging and immersive magical experiences.
       </p>
 
-      <p className="mt-4">
-        "Remember," Orion said as their lesson concluded, "the most powerful magic is that which responds to the unique
-        needs and journey of each individual. By creating realms that adapt and change, you create experiences that feel
-        personal and meaningful."
+      <p className='mt-4'>
+        "Remember," Orion said as their lesson concluded, "the most powerful magic is that which responds to the unique needs and journey of each
+        individual. By creating realms that adapt and change, you create experiences that feel personal and meaningful."
       </p>
 
-      <p className="mt-4">
-        With her training complete, Aria felt ready to combine all she had learned - magical constructs, enchanted
-        backpacks, interactive spells, magical contracts, and dynamic realms - to create truly magical experiences for
-        the users of her realm.
+      <p className='mt-4'>
+        With her training complete, Lyra felt ready to combine all she had learned - magical constructs, enchanted backpacks, interactive spells,
+        magical contracts, and dynamic realms - to create truly magical experiences for the users of her realm.
       </p>
 
-      <p className="mt-4">
-        As she prepared to leave the Shifting Isles, Orion handed her a final scroll. "Your journey is just beginning,"
-        he said. "This scroll contains advanced enchantments that you can study when you're ready. But remember, the
-        most important magic is that which brings joy and wonder to those who experience it."
+      <p className='mt-4'>
+        As she prepared to leave the Shifting Isles, Orion handed her a final scroll. "Your journey is just beginning," he said. "This scroll contains
+        advanced enchantments that you can study when you're ready. But remember, the most important magic is that which brings joy and wonder to
+        those who experience it."
       </p>
 
-      <p className="mt-4">
-        Aria nodded, tucking the scroll into her enchanted backpack. She was no longer just a novice enchanter - she was
-        now a creator of magical experiences, ready to craft her own unique contributions to the realm of Weboria.
+      <p className='mt-4'>
+        Lyra nodded, tucking the scroll into her enchanted backpack. She was no longer just a novice enchanter - she was now a creator of magical
+        experiences, ready to craft her own unique contributions to the realm of Weboria.
       </p>
     </div>
-  )
+  );
 }
